@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+$yellow: hsl(47, 88%, 63%);
+$white: hsl(0, 0%, 100%);
+$grey500: hsl(0, 0%, 42%);
+$grey950: hsl(0, 0%, 7%);
+
+$paragraph-font-size: 1.6rem;
+
+$weight-500: 500;
+$weight-800: 800;
+
+$text-preset-1: 2.4rem;
+$text-preset-2: 1.6rem;
+$text-preset-3: 1.4rem;
+$text-preset-3-bold: 1.4rem;
+
+@mixin text-preset($font-size, $font-weight: 500, $letter-spacing: 0, $line-height: 150%) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body{
+  background-color: $yellow;
+  font-family: 'Figtree', sans-serif;
+  height: 100vh;
+}
+
+.blog-card{
+  background-color: $white;
+  border: .1rem solid $grey950;
+  border-radius: 2rem;
+  box-shadow: .9rem .8rem 0 .3rem $grey950;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  height: 52.2rem;
+  margin: 12px;
+  max-width: 38.4rem;
+
+  padding: 2.4rem;
+
+  @media (max-width: 76.8rem) {
+    max-width: 32.7rem;
+    height: 50.1rem;
+  }
+
+
+  &__layout {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+  }
+
+  &__image {
+    border-radius: 1rem;
+    display: block;
+    width: 33.6rem;
+    height: 20rem;
+    object-fit: cover;
+
+    @media (max-width: 76.8rem) {
+      border-radius: 1rem;
+      width: 27.9rem;
+    }
+
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  &__paragraph{
+    @include text-preset(clamp(1.4rem, 1.5vw, $text-preset-2));
+    color: $grey500;
+  }
+
+  &__date{
+    @include text-preset($text-preset-3);
+  }
+
+  &__title{
+    @include text-preset(clamp(2rem, 1.5vw, $text-preset-1));
+    font-weight: 800;
+    transition: color 0.1s ease-in-out;
+    width: fit-content;
+
+    &:hover {
+      cursor: pointer;
+      color: $yellow;
+    }
+  }
+
+  &__chip {
+    @include text-preset($text-preset-3-bold, $weight-800);
+    background-color: $yellow;
+    border-radius: .4rem;
+    display: block;
+    padding: .4rem 1.2rem;
+    max-width: 8.2rem;
+
+  }
+
+  &__footer {
+    align-items: center;
+    display: flex;
+    gap: 1.2rem;
+    height: 3.2rem;
+    min-width: 12.9rem;
+  }
+
+  &__profile--name {
+    @include text-preset($text-preset-3-bold, $weight-800);
+
+  }
+
+  &__profile--picture {
+    height: 3.2rem;
+    min-width: 3.2rem;
+  }
+}
